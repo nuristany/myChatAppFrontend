@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useRef } from "react";
 
 const ChatRoom = ({ token, username }) => {
@@ -36,9 +34,15 @@ const ChatRoom = ({ token, username }) => {
           const data = await response.json();
           const ticketUUID = data.uuid;
           // const wsUrl = `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
-       
-          const wsUrl = `ws://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
 
+          const wsUrl =
+            process.env.NODE_ENV === "production"
+              ? `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`
+              : `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
+
+          // const chatSocket = new WebSocket(wsUrl);
+
+          // const wsUrl = `ws://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
 
           const chatSocket = new WebSocket(wsUrl);
           wsRef.current = chatSocket;
@@ -60,13 +64,15 @@ const ChatRoom = ({ token, username }) => {
 
               // Auto-scroll to the bottom
               if (chatLogRef.current) {
-                chatLogRef.current.scrollTop =
-                  chatLogRef.current.scrollHeight;
+                chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
               }
             } else if (data.user_typing && data.user_typing !== username) {
               setTypingUser(`${data.user_typing} is typing...`);
               clearTimeout(typingTimeoutRef.current);
-              typingTimeoutRef.current = setTimeout(() => setTypingUser(""), 3000); // Adjusted timeout duration
+              typingTimeoutRef.current = setTimeout(
+                () => setTypingUser(""),
+                3000
+              ); // Adjusted timeout duration
             }
           };
 
@@ -166,4 +172,3 @@ const ChatRoom = ({ token, username }) => {
 };
 
 export default ChatRoom;
-
