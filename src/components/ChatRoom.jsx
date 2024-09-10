@@ -33,16 +33,14 @@ const ChatRoom = ({ token, username }) => {
         if (response.ok) {
           const data = await response.json();
           const ticketUUID = data.uuid;
-          // const wsUrl = `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
+          const wsUrl = `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
 
-          const wsUrl =
-            process.env.NODE_ENV === "production"
-              ? `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`
-              : `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
+          // const wsUrl =
+          //   process.env.NODE_ENV === "production"
+          //     ? `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`
+          //     : `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
 
-          // const chatSocket = new WebSocket(wsUrl);
-
-          // const wsUrl = `ws://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
+         
 
           const chatSocket = new WebSocket(wsUrl);
           wsRef.current = chatSocket;
