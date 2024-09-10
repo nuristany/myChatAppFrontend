@@ -22,7 +22,8 @@ const ChatRoom = ({ token, username }) => {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/auth_for_ws_connection/",
+          "https://web-production-1cf3.up.railway.app/auth_for_ws_connection/",
+          // "http://127.0.0.1:8000/auth_for_ws_connection/",
           {
             method: "GET",
             headers: {
