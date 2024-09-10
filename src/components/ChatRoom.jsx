@@ -21,7 +21,7 @@ const ChatRoom = ({ token, username }) => {
       try {
         const response = await fetch(
           "https://web-production-1cf3.up.railway.app/auth_for_ws_connection/",
-          // "http://127.0.0.1:8000/auth_for_ws_connection/",
+       
           {
             method: "GET",
             headers: {
@@ -35,10 +35,7 @@ const ChatRoom = ({ token, username }) => {
           const ticketUUID = data.uuid;
           const wsUrl = `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
 
-          // const wsUrl =
-          //   process.env.NODE_ENV === "production"
-          //     ? `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`
-          //     : `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
+     
 
          
 
