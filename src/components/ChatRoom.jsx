@@ -37,7 +37,7 @@ const ChatRoom = ({ token, username }) => {
           const ticketUUID = data.uuid;
           // const wsUrl = `ws://localhost:8000/ws/chat/general/?uuid=${ticketUUID}`;
        
-          const wsUrl = `wss://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
+          const wsUrl = `ws://web-production-1cf3.up.railway.app/ws/chat/general/?uuid=${ticketUUID}`;
 
 
           const chatSocket = new WebSocket(wsUrl);
