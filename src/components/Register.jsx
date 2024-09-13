@@ -29,7 +29,7 @@ function Register() {
     }
 
     try {
-      const response = await fetch("https://web-production-1cf3.up.railway.app/auth/users/", {
+      const response = await fetch("https://web-production-0585.up.railway.app/auth/jwt/create/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ function Register() {
         return;
       }
 
-      const response = await fetch("https://web-production-1cf3.up.railway.app/verify-otp/", {
+      const response = await fetch("https://web-production-0585.up.railway.app/verify-otp/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

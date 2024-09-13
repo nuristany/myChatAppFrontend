@@ -13,7 +13,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://web-production-1cf3.up.railway.app/auth/jwt/create",
+        "https://web-production-0585.up.railway.app/auth/jwt/create",
         // "http://127.0.0.1:8000/auth/jwt/create",
         {
           email,
